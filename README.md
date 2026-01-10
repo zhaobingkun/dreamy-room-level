@@ -1,10 +1,7 @@
 # dreamy-room-level
+# dreamy-room Level Walkthroughs (Fan Guide Site)
 
-[Repository: https://github.com/zhaobingkun/dreamy-room-level](https://github.com/zhaobingkun/dreamy-room-level)
-
-# PixelFlow Level Walkthroughs (Fan Guide Site)
-
-A fast, SEO-friendly walkthrough website for dreamy-room-level — level-by-level solutions, tips, and video guides.  
+A fast, SEO-friendly walkthrough website for **dreamy-room** — level-by-level solutions, tips, and video guides.  
 This project is inspired by modern game guide sites (e.g. dreamy-room.org style), with a focus on:
 - Clean layout and great reading experience
 - Structured level pages for search engines
