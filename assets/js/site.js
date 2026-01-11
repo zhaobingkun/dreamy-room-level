@@ -49,6 +49,26 @@
     grid.appendChild(col);
   }
 
+  function injectAnalytics() {
+    if (document.querySelector('[data-analytics-gtag]')) return;
+    const wrap = document.createElement('div');
+    wrap.style.display = 'none';
+    wrap.setAttribute('data-analytics-gtag', 'true');
+    const scriptAsync = document.createElement('script');
+    scriptAsync.async = true;
+    scriptAsync.src = 'https://www.googletagmanager.com/gtag/js?id=G-31PECBEES4';
+    const scriptInline = document.createElement('script');
+    scriptInline.textContent = `
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-31PECBEES4');
+    `;
+    wrap.appendChild(scriptAsync);
+    wrap.appendChild(scriptInline);
+    document.body.appendChild(wrap);
+  }
+
   function addJsonLd(obj){
     const script = document.createElement('script');
     script.type = 'application/ld+json';
@@ -229,6 +249,7 @@
     setupLevelNavThumbnails();
     injectFooterLinks();
     injectStructuredData();
+    injectAnalytics();
   }
 
   if (document.readyState === 'loading') {
