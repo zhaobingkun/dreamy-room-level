@@ -180,9 +180,6 @@
       const el = document.createElement('a');
       el.className = `nav-card ${type}`;
       if (href) el.href = href;
-      const span = document.createElement('span');
-      span.className = 'label';
-      span.textContent = label;
       const img = document.createElement('img');
       img.alt = `Level ${levelNum} thumbnail`;
       img.loading = 'lazy';
@@ -200,6 +197,9 @@
         }
       };
       img.onerror = handleError;
+      const span = document.createElement('span');
+      span.className = 'label';
+      span.textContent = label;
       el.appendChild(img);
       el.appendChild(span);
       return el;
