@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Not Found | DreamyRoomLevel.org</title>
+  <meta name="robots" content="noindex, follow">
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <main class="section">
+    <div class="container card" style="text-align:center;">
+      <h1>Page not found</h1>
+      <p id="missing-msg">We couldn't find that level or page. Taking you back shortly.</p>
+      <p>If nothing happens, <a id="fallback" href="/index.html">return home</a>.</p>
+    </div>
+  </main>
+  <script>
+    (function(){
+      var params = new URLSearchParams(window.location.search);
+      var from = params.get('from');
+      var missing = params.get('missing');
+      var missingMsg = document.getElementById('missing-msg');
+      if(missing && missingMsg){
+        missingMsg.textContent = 'Level not found: ' + missing + '. Taking you back shortly.';
+      }
+      if(from){ document.getElementById('fallback').setAttribute('href', from); }
+      setTimeout(function(){
+        if(from) { window.location.replace(from); return; }
+        if(window.history.length > 1){ window.history.back(); return; }
+        window.location.replace('/index.html');
+      }, 2000);
+    })();
+  </script>
+</body>
+</html>
