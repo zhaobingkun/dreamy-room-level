@@ -2,7 +2,7 @@
 :root {
   --bg: #f8f5ff;
   --ink: #1d1333;
-  --accent: #7c5dff;
+  --accent: #5a32c8;
   --muted: #6b5c85;
   --card: #ffffff;
   --shadow: 0 8px 24px rgba(24,16,51,0.08);
@@ -50,8 +50,8 @@ button, .btn {
 .hero-compact { padding: 1.6rem 0 1rem; }
 .hero-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.2rem; align-items: flex-start; }
 .hero-player .play-embed { height: min(75vh, 620px); }
-.level-page .hero { padding: 1.4rem 0 0.6rem; }
-.level-page .section { padding: 1.2rem 0 1.8rem; }
+.level-page .hero { padding: 0.6rem 0 0.35rem; }
+.level-page .section { padding: 0.7rem 0 0.9rem; }
 .play-page .hero-compact { padding: 0.45rem 0 0.7rem; }
 .play-page .hero h1 { margin: 0.2rem 0 0.6rem; font-size: clamp(1.6rem, 2.4vw, 2.2rem); }
 .play-page .hero p { margin: 0; text-align: center; }
@@ -144,5 +144,6 @@ button, .btn {
 .blog-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; }
 .blog-list .card h3 { margin:0.2rem 0; }
 .small { color: var(--muted); font-size: 0.95rem; }
+.footer .small, footer .small { color: #d9d2ff; }
 
 .play-embed { width: 100%; height: 620px; border: 0; border-radius: 14px; box-shadow: var(--shadow); }

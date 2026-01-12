@@ -69,6 +69,34 @@
     document.body.appendChild(wrap);
   }
 
+  function scheduleAnalytics() {
+    const load = () => injectAnalytics();
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(load, { timeout: 4000 });
+    } else {
+      setTimeout(load, 2000);
+    }
+  }
+
+  function injectPreconnects() {
+    const head = document.head;
+    if (!head) return;
+    const origins = [
+      'https://fonts.googleapis.com',
+      'https://fonts.gstatic.com',
+      'https://i.ytimg.com',
+      'https://www.youtube.com'
+    ];
+    origins.forEach((href) => {
+      if (head.querySelector(`link[rel=\"preconnect\"][href=\"${href}\"]`)) return;
+      const link = document.createElement('link');
+      link.rel = 'preconnect';
+      link.href = href;
+      if (href.includes('gstatic')) link.crossOrigin = 'anonymous';
+      head.appendChild(link);
+    });
+  }
+
   function addJsonLd(obj){
     const script = document.createElement('script');
     script.type = 'application/ld+json';
@@ -315,7 +343,8 @@
     setupLevelNavThumbnails();
     injectFooterLinks();
     injectStructuredData();
-    injectAnalytics();
+    injectPreconnects();
+    scheduleAnalytics();
     injectShareBox();
   }
 

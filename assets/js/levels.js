@@ -33,6 +33,9 @@
       img.className = 'card-thumb';
       img.loading = 'lazy';
       img.src = `/assets/images/thumbnails/Dreamy-Room-Level-${entry.levelStart}.webp`;
+      img.alt = `Dreamy Room Level ${entry.levelStart} thumbnail`;
+      img.width = 320;
+      img.height = 180;
       if(entry.videoId){
         img.onerror = ()=>{ img.onerror=null; img.src = `https://img.youtube.com/vi/${entry.videoId}/hqdefault.jpg`; };
       }
@@ -131,6 +134,9 @@
       img.className = 'card-thumb';
       img.loading = 'lazy';
       img.src = `/assets/images/thumbnails/Dreamy-Room-Level-${entry.levelStart}.webp`;
+      img.alt = `Dreamy Room Level ${entry.levelStart} thumbnail`;
+      img.width = 320;
+      img.height = 180;
       if(entry.videoId){
         img.onerror = ()=>{ img.onerror=null; img.src = `https://img.youtube.com/vi/${entry.videoId}/hqdefault.jpg`; };
       }
