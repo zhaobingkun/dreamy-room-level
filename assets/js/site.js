@@ -244,12 +244,79 @@
     nav.appendChild(grid);
   }
 
+  function openSharePopup(url, title) {
+    const w = 760;
+    const h = 640;
+    const left = (window.screen.width - w) / 2;
+    const top = (window.screen.height - h) / 2;
+    const win = window.open(url, title || 'Share', `width=${w},height=${h},top=${top},left=${left},noopener,noreferrer`);
+    if (!win || win.closed || typeof win.closed === 'undefined') {
+      console.warn('Popup blocked. Please allow popups to share.');
+    } else {
+      try { win.focus(); } catch(e) {/* ignore */ }
+    }
+  }
+
+  function bindShareBox(box) {
+    const url = window.location.href;
+    const title = (document.querySelector('h1') || {}).textContent || 'Dreamy Room level guide';
+    box.querySelectorAll('[data-share]').forEach((btn) => {
+      btn.addEventListener('click', async () => {
+        const type = btn.dataset.share;
+        if (type === 'copy') {
+          try {
+            await navigator.clipboard.writeText(url);
+            btn.textContent = 'Copied!';
+            setTimeout(() => { btn.textContent = 'Copy Link'; }, 1600);
+          } catch (err) {
+            window.prompt('Copy this link', url);
+          }
+          return;
+        }
+        let shareUrl = '';
+        if (type === 'facebook') shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
+        if (type === 'twitter') shareUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`;
+        if (type === 'reddit') shareUrl = `https://www.reddit.com/submit?url=${encodeURIComponent(url)}&title=${encodeURIComponent(title)}`;
+        if (type === 'whatsapp') shareUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(title + ' ' + url)}`;
+        if (shareUrl) openSharePopup(shareUrl, `Share ${title}`);
+      });
+    });
+  }
+
+  function injectShareBox() {
+    const path = window.location.pathname || '';
+    if (!/\/level\/\d+(\/index\.html)?\/?$/.test(path)) return;
+    const existing = Array.from(document.querySelectorAll('.share-box'));
+    if (existing.length) {
+      existing.forEach(bindShareBox);
+      return;
+    }
+    const frame = document.querySelector('.video-frame');
+    if (!frame) return;
+    const share = document.createElement('div');
+    share.className = 'share-box';
+    share.innerHTML = `
+      <h3>Share This Level Guide</h3>
+      <p>Help other players by sharing this walkthrough guide.</p>
+      <div class="share-actions">
+        <button type="button" class="share-btn share-facebook" data-share="facebook">Facebook</button>
+        <button type="button" class="share-btn share-twitter" data-share="twitter">Twitter</button>
+        <button type="button" class="share-btn share-reddit" data-share="reddit">Reddit</button>
+        <button type="button" class="share-btn share-whatsapp" data-share="whatsapp">WhatsApp</button>
+        <button type="button" class="share-btn share-copy" data-share="copy">Copy Link</button>
+      </div>
+    `;
+    bindShareBox(share);
+    frame.insertAdjacentElement('afterend', share);
+  }
+
   function init() {
     setupVideoPosters();
     setupLevelNavThumbnails();
     injectFooterLinks();
     injectStructuredData();
     injectAnalytics();
+    injectShareBox();
   }
 
   if (document.readyState === 'loading') {

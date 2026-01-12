@@ -111,6 +111,18 @@ button, .btn {
 .nav-card img { width: 100%; height: 220px; object-fit: cover; border-radius: 14px; background: #f7f4ff; border: 1px solid #eee7ff; }
 .nav-card .spacer-thumb { width: 100%; height: 220px; border-radius: 14px; background: #f7f4ff; border: 1px solid #eee7ff; }
 .nav-card.current { background: #f4efff; border-color: #d3c4ff; }
+
+.share-box { margin-top: 1rem; padding: 1rem; border-radius: 14px; border: 1px solid #d8cfff; background: #eefcf4; box-shadow: var(--shadow); }
+.share-box h3 { margin: 0 0 0.3rem; }
+.share-box p { margin: 0 0 0.7rem; }
+.share-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.share-btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.35rem; padding: 0.55rem 0.9rem; border-radius: 10px; border: none; color: #fff; font-weight: 800; cursor: pointer; box-shadow: var(--shadow); text-transform: uppercase; letter-spacing: 0.04em; }
+.share-facebook { background: #1877f2; }
+.share-twitter { background: #1d9bf0; }
+.share-reddit { background: #ff4500; }
+.share-whatsapp { background: #25d366; }
+.share-copy { background: #3b4454; }
+.share-btn:focus-visible, .share-btn:hover { filter: brightness(1.05); transform: translateY(-1px); }
 .related-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 0.4rem; }
 .related-grid a { display: grid; place-items: center; padding: 0.5rem; border-radius: 10px; border: 1px solid #d8cfff; background: #f4efff; font-weight: 700; }
 .split { display: grid; grid-template-columns: minmax(0, 1.3fr) 360px; gap: 1rem; align-items: flex-start; }
