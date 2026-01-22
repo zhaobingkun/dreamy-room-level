@@ -5,7 +5,7 @@
   const navToggle = document.querySelector('[data-nav-toggle]');
   const navLinks = document.querySelector('.nav-links');
   if(navToggle && navLinks){ navToggle.addEventListener('click', ()=> navLinks.classList.toggle('open')); }
-  const isLevelPage = /\\/level\\/\\d+\\/?$/.test(window.location.pathname);
+  const isLevelPage = /\/level\/\d+\/?$/.test(window.location.pathname);
   if (isLevelPage) {
     document.body.classList.add('level-page');
   }
@@ -179,24 +179,28 @@
   }
 
   function setupLevelNavThumbnails() {
-    const nav = document.querySelector('.level-nav');
-    if (!nav || !window.DREAMY_PLAYLIST) return;
+    const navs = Array.from(document.querySelectorAll('.level-nav'));
+    if (!navs.length || !window.DREAMY_PLAYLIST) return;
 
     const playlist = window.DREAMY_PLAYLIST;
     const path = window.location.pathname || '';
-    let currentLevel = parseInt((path.match(/level\\/(\\d+)/) || [])[1], 10);
+    let currentLevel = parseInt((path.match(/level\/(\d+)/) || [])[1], 10);
     if (Number.isNaN(currentLevel)) {
       const badgeText = (document.querySelector('.badge') || {}).textContent || '';
-      currentLevel = parseInt((badgeText.match(/(\\d+)/) || [])[1], 10);
+      currentLevel = parseInt((badgeText.match(/(\d+)/) || [])[1], 10);
     }
     if (!currentLevel || Number.isNaN(currentLevel)) return;
 
-    const levelMap = new Map(playlist.flatMap(item => {
+    const levelMap = new Map(playlist.flatMap((item) => {
       const entries = [];
-      for(let i=item.levelStart; i<=item.levelEnd; i++){ entries.push([i, item]); }
+      for (let i = item.levelStart; i <= item.levelEnd; i++) entries.push([i, item]);
       return entries;
     }));
-    const maxLevel = Math.max(...playlist.map(item => item.levelEnd));
+    const maxLevel = Math.max(...playlist.map((item) => item.levelEnd));
+
+    const prevLevel = currentLevel > 1 ? currentLevel - 1 : null;
+    const nextLevel = currentLevel < maxLevel ? currentLevel + 1 : null;
+    if (!prevLevel && !nextLevel) return;
 
     const thumbUrl = (levelNum) => {
       const data = levelMap.get(levelNum);
@@ -204,72 +208,38 @@
       return { local: `/assets/images/thumbnails/Dreamy-Room-Level-${levelNum}.webp`, fallback: youtubeThumb };
     };
 
-    const createCard = (type, levelNum, label, href) => {
-      const el = document.createElement('a');
-      el.className = `nav-card ${type}`;
-      if (href) el.href = href;
+    const createThumbLink = (direction, levelNum) => {
+      const a = document.createElement('a');
+      a.className = `level-nav-thumb ${direction}`;
+      a.href = `/level/${levelNum}/`;
+      a.setAttribute('aria-label', `${direction === 'prev' ? 'Previous' : 'Next'} level ${levelNum}`);
       const img = document.createElement('img');
-      img.alt = `Level ${levelNum} thumbnail`;
+      img.alt = `Dreamy Room Level ${levelNum} preview`;
       img.loading = 'lazy';
       const urls = thumbUrl(levelNum);
       img.src = urls.local;
       let triedFallback = false;
-      const handleError = () => {
+      img.onerror = () => {
         if (!triedFallback && urls.fallback && img.src !== urls.fallback) {
           triedFallback = true;
           img.src = urls.fallback;
           return;
         }
-        if (img.src !== PLACEHOLDER_IMG) {
-          img.src = PLACEHOLDER_IMG;
-        }
+        img.src = PLACEHOLDER_IMG;
       };
-      img.onerror = handleError;
-      const span = document.createElement('span');
-      span.className = 'label';
-      span.textContent = label;
-      el.appendChild(img);
-      el.appendChild(span);
-      return el;
+      a.appendChild(img);
+      return a;
     };
 
-    const prevLevel = currentLevel > 1 ? currentLevel - 1 : null;
-    const nextLevel = currentLevel < maxLevel ? currentLevel + 1 : null;
-
-    const grid = document.createElement('div');
-    grid.className = 'level-nav-grid';
-    const header = document.createElement('div');
-    header.className = 'level-nav-header';
-    const title = document.createElement('h3');
-    title.textContent = 'Related Levels';
-    const allLink = document.createElement('a');
-    allLink.href = '/levels.html';
-    allLink.className = 'level-nav-all';
-    allLink.textContent = 'All Levels →';
-    header.appendChild(title);
-    header.appendChild(allLink);
-
-    if (prevLevel) {
-      grid.appendChild(createCard('prev', prevLevel, `← Level ${prevLevel}`, `/level/${prevLevel}/`));
-    } else {
-      const placeholder = document.createElement('div');
-      placeholder.className = 'nav-card disabled';
-      placeholder.innerHTML = '<div class="spacer-thumb"></div><span class="label">Start</span>';
-      grid.appendChild(placeholder);
-    }
-
-    if (nextLevel) {
-      grid.appendChild(createCard('next', nextLevel, `Level ${nextLevel} →`, `/level/${nextLevel}/`));
-    } else {
-      const placeholder = document.createElement('div');
-      placeholder.className = 'nav-card disabled';
-      placeholder.innerHTML = '<div class="spacer-thumb"></div><span class="label">End</span>';
-      grid.appendChild(placeholder);
-    }
-
-    nav.innerHTML = '';
-    nav.appendChild(header);
-    nav.appendChild(grid);
+    navs.forEach((nav) => {
+      if (nav.querySelector('.level-nav-thumbs')) return;
+      const thumbs = document.createElement('div');
+      thumbs.className = 'level-nav-thumbs';
+      if (prevLevel) thumbs.appendChild(createThumbLink('prev', prevLevel));
+      if (nextLevel) thumbs.appendChild(createThumbLink('next', nextLevel));
+      nav.insertAdjacentElement('afterbegin', thumbs);
+      nav.classList.add('level-nav--with-thumbs');
+    });
   }
 
   function openSharePopup(url, title) {
@@ -277,48 +247,75 @@
     const h = 640;
     const left = (window.screen.width - w) / 2;
     const top = (window.screen.height - h) / 2;
-    const win = window.open(url, title || 'Share', `width=${w},height=${h},top=${top},left=${left},noopener,noreferrer`);
+    const win = window.open(url, title || 'Share', `width=${w},height=${h},top=${top},left=${left},noopener=yes`);
     if (!win || win.closed || typeof win.closed === 'undefined') {
       console.warn('Popup blocked. Please allow popups to share.');
     } else {
       try { win.focus(); } catch(e) {/* ignore */ }
     }
+    return win;
+  }
+
+  function buildShareMeta() {
+    const canonical = document.querySelector('link[rel=canonical]');
+    const url = (canonical && canonical.href) || window.location.href;
+    const title = (document.querySelector('h1') || {}).textContent || 'Dreamy Room level guide';
+    return { url, title };
+  }
+
+  async function handleShareClick(btn, evt) {
+    if (evt) evt.preventDefault();
+    const { url, title } = buildShareMeta();
+    const type = (btn.dataset.share || '').trim();
+    if (!type) return;
+    if (type === 'copy') {
+      try {
+        await navigator.clipboard.writeText(url);
+        btn.textContent = 'Copied!';
+        setTimeout(() => { btn.textContent = 'Copy Link'; }, 1600);
+      } catch (err) {
+        window.prompt('Copy this link', url);
+      }
+      return;
+    }
+    const shareLinks = {
+      facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`,
+      twitter: `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`,
+      reddit: `https://www.reddit.com/submit?url=${encodeURIComponent(url)}&title=${encodeURIComponent(title)}`,
+      whatsapp: `https://api.whatsapp.com/send?text=${encodeURIComponent(title + ' ' + url)}`
+    };
+    const shareUrl = shareLinks[type];
+    if (!shareUrl) return;
+    const win = openSharePopup(shareUrl, `Share ${title}`);
+    if (!win) {
+      window.location.href = shareUrl;
+    }
   }
 
   function bindShareBox(box) {
-    const url = window.location.href;
-    const title = (document.querySelector('h1') || {}).textContent || 'Dreamy Room level guide';
     box.querySelectorAll('[data-share]').forEach((btn) => {
-      btn.addEventListener('click', async () => {
-        const type = btn.dataset.share;
-        if (type === 'copy') {
-          try {
-            await navigator.clipboard.writeText(url);
-            btn.textContent = 'Copied!';
-            setTimeout(() => { btn.textContent = 'Copy Link'; }, 1600);
-          } catch (err) {
-            window.prompt('Copy this link', url);
-          }
-          return;
-        }
-        let shareUrl = '';
-        if (type === 'facebook') shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
-        if (type === 'twitter') shareUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`;
-        if (type === 'reddit') shareUrl = `https://www.reddit.com/submit?url=${encodeURIComponent(url)}&title=${encodeURIComponent(title)}`;
-        if (type === 'whatsapp') shareUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(title + ' ' + url)}`;
-        if (shareUrl) openSharePopup(shareUrl, `Share ${title}`);
-      });
+      if (btn.dataset.shareBound === '1') return;
+      btn.dataset.shareBound = '1';
+      btn.addEventListener('click', (evt) => handleShareClick(btn, evt));
+    });
+  }
+
+  function setupShareDelegation() {
+    document.addEventListener('click', (evt) => {
+      const btn = evt.target.closest('[data-share]');
+      if (!btn || btn.dataset.shareBound === '1') return;
+      handleShareClick(btn, evt);
     });
   }
 
   function injectShareBox() {
-    const path = window.location.pathname || '';
-    if (!/\/level\/\d+(\/index\.html)?\/?$/.test(path)) return;
     const existing = Array.from(document.querySelectorAll('.share-box'));
     if (existing.length) {
       existing.forEach(bindShareBox);
       return;
     }
+    const path = window.location.pathname || '';
+    if (!/\/level\/\d+(\/index\.html)?\/?$/.test(path)) return;
     const frame = document.querySelector('.video-frame');
     if (!frame) return;
     const share = document.createElement('div');
@@ -345,6 +342,7 @@
     injectStructuredData();
     injectPreconnects();
     scheduleAnalytics();
+    setupShareDelegation();
     injectShareBox();
   }
 

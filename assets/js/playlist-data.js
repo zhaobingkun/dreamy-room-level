@@ -4867,5 +4867,149 @@ window.DREAMY_PLAYLIST = [
     "levelEnd": 541,
     "slug": "level-541",
     "videoId": "JcoZ-NTATHU"
+  },
+  {
+    "title": "Dreamy Room Level 542 Walkthrough",
+    "subtitle": "Dreamy Room Level 542 video guide",
+    "href": "https://www.youtube.com/watch?v=j_2wleCaJdk",
+    "levelStart": 542,
+    "levelEnd": 542,
+    "slug": "level-542",
+    "videoId": "j_2wleCaJdk"
+  },
+  {
+    "title": "Dreamy Room Level 543 Walkthrough",
+    "subtitle": "Dreamy Room Level 543 video guide",
+    "href": "https://www.youtube.com/watch?v=Qn-6Q06Cmow",
+    "levelStart": 543,
+    "levelEnd": 543,
+    "slug": "level-543",
+    "videoId": "Qn-6Q06Cmow"
+  },
+  {
+    "title": "Dreamy Room Level 544 Walkthrough",
+    "subtitle": "Dreamy Room Level 544 video guide",
+    "href": "https://www.youtube.com/watch?v=H_Uu2yewjPI",
+    "levelStart": 544,
+    "levelEnd": 544,
+    "slug": "level-544",
+    "videoId": "H_Uu2yewjPI"
+  },
+  {
+    "title": "Dreamy Room Level 545 Walkthrough",
+    "subtitle": "Dreamy Room Level 545 video guide",
+    "href": "https://www.youtube.com/watch?v=vQ-dWgO1RJI",
+    "levelStart": 545,
+    "levelEnd": 545,
+    "slug": "level-545",
+    "videoId": "vQ-dWgO1RJI"
+  },
+  {
+    "title": "Dreamy Room Level 546 Walkthrough",
+    "subtitle": "Dreamy Room Level 546 video guide",
+    "href": "https://www.youtube.com/watch?v=pJqIMJKYSyY",
+    "levelStart": 546,
+    "levelEnd": 546,
+    "slug": "level-546",
+    "videoId": "pJqIMJKYSyY"
+  },
+  {
+    "title": "Dreamy Room Level 547 Walkthrough",
+    "subtitle": "Dreamy Room Level 547 video guide",
+    "href": "https://www.youtube.com/watch?v=Y5az6HOz6BA",
+    "levelStart": 547,
+    "levelEnd": 547,
+    "slug": "level-547",
+    "videoId": "Y5az6HOz6BA"
+  },
+  {
+    "title": "Dreamy Room Level 548 Walkthrough",
+    "subtitle": "Dreamy Room Level 548 video guide",
+    "href": "https://www.youtube.com/watch?v=S9wE3CP1B3c",
+    "levelStart": 548,
+    "levelEnd": 548,
+    "slug": "level-548",
+    "videoId": "S9wE3CP1B3c"
+  },
+  {
+    "title": "Dreamy Room Level 549 Walkthrough",
+    "subtitle": "Dreamy Room Level 549 video guide",
+    "href": "https://www.youtube.com/watch?v=dQUMvYhjWyI",
+    "levelStart": 549,
+    "levelEnd": 549,
+    "slug": "level-549",
+    "videoId": "dQUMvYhjWyI"
+  },
+  {
+    "title": "Dreamy Room Level 550 Walkthrough",
+    "subtitle": "Dreamy Room Level 550 video guide",
+    "href": "https://www.youtube.com/watch?v=PFIGS61-5EI",
+    "levelStart": 550,
+    "levelEnd": 550,
+    "slug": "level-550",
+    "videoId": "PFIGS61-5EI"
+  },
+  {
+    "title": "Dreamy Room Level 551 Walkthrough",
+    "subtitle": "Dreamy Room Level 551 video guide",
+    "href": "https://www.youtube.com/watch?v=DaKeXSe0EZk",
+    "levelStart": 551,
+    "levelEnd": 551,
+    "slug": "level-551",
+    "videoId": "DaKeXSe0EZk"
+  },
+  {
+    "title": "Dreamy Room Level 552 Walkthrough",
+    "subtitle": "Dreamy Room Level 552 video guide",
+    "href": "https://www.youtube.com/watch?v=_PV60RcuKzY",
+    "levelStart": 552,
+    "levelEnd": 552,
+    "slug": "level-552",
+    "videoId": "_PV60RcuKzY"
+  },
+  {
+    "title": "Dreamy Room Level 553 Walkthrough",
+    "subtitle": "Dreamy Room Level 553 video guide",
+    "href": "https://www.youtube.com/watch?v=FTeO_aN1QQI",
+    "levelStart": 553,
+    "levelEnd": 553,
+    "slug": "level-553",
+    "videoId": "FTeO_aN1QQI"
+  },
+  {
+    "title": "Dreamy Room Level 554 Walkthrough",
+    "subtitle": "Dreamy Room Level 554 video guide",
+    "href": "https://www.youtube.com/watch?v=11ssEXyVot0",
+    "levelStart": 554,
+    "levelEnd": 554,
+    "slug": "level-554",
+    "videoId": "11ssEXyVot0"
+  },
+  {
+    "title": "Dreamy Room Level 555 Walkthrough",
+    "subtitle": "Dreamy Room Level 555 video guide",
+    "href": "https://www.youtube.com/watch?v=PFSjvH0RT80",
+    "levelStart": 555,
+    "levelEnd": 555,
+    "slug": "level-555",
+    "videoId": "PFSjvH0RT80"
+  },
+  {
+    "title": "Dreamy Room Level 556 Walkthrough",
+    "subtitle": "Dreamy Room Level 556 video guide",
+    "href": "https://www.youtube.com/watch?v=Dr68F9LA6K0",
+    "levelStart": 556,
+    "levelEnd": 556,
+    "slug": "level-556",
+    "videoId": "Dr68F9LA6K0"
+  },
+  {
+    "title": "Dreamy Room Level 557 Walkthrough",
+    "subtitle": "Dreamy Room Level 557 video guide",
+    "href": "https://www.youtube.com/watch?v=p9cDhO1xg5M",
+    "levelStart": 557,
+    "levelEnd": 557,
+    "slug": "level-557",
+    "videoId": "p9cDhO1xg5M"
   }
 ]

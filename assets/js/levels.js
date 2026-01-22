@@ -1,7 +1,7 @@
 
 (function(){
   const data = window.DREAMY_PLAYLIST || [];
-  const maxLevel = data.reduce((m,e)=> Math.max(m, e.levelEnd||0), 0) || 541;
+  const maxLevel = data.reduce((m,e)=> Math.max(m, e.levelEnd||0), 0) || 557;
   function buildHref(lvl){ return `/level/${lvl}/`; }
   function findEntry(level){ const n = Number(level); return data.find(e=>n>=e.levelStart && n<=e.levelEnd); }
   function showInlineError(scope, msg){

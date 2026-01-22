@@ -101,6 +101,12 @@ button, .btn {
 .level-photo { margin-bottom: 0.8rem; border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); border: 1px solid #efe8ff; background: #fff; }
 .level-photo img { width: 100%; height: auto; display: block; }
 .level-nav { display: block; margin-top: 0.6rem; padding: 1rem; background: #f6f2ff; border-radius: 18px; border: 1px solid #e7deff; box-shadow: var(--shadow); }
+.level-nav > a { display: inline-flex; align-items: center; }
+.level-nav > a + a { margin-left: 0.9rem; }
+.level-nav-thumbs { display: grid; grid-template-columns: repeat(auto-fit, minmax(0, 1fr)); gap: 0.75rem; margin-bottom: 0.8rem; }
+.level-nav-thumbs .level-nav-thumb { display: block; border-radius: 14px; overflow: hidden; border: 1px solid #e7deff; background: #fff; box-shadow: var(--shadow); }
+.level-nav-thumbs img { width: 100%; height: 110px; object-fit: cover; display: block; }
+.level-nav-thumbs .level-nav-thumb:focus-visible, .level-nav-thumbs .level-nav-thumb:hover { transform: translateY(-1px); filter: brightness(1.02); }
 .level-nav-header { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; margin-bottom: 0.8rem; }
 .level-nav-header h3 { margin: 0; }
 .level-nav-all { color: var(--accent); font-weight: 700; }
