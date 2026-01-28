@@ -5011,5 +5011,104 @@ window.DREAMY_PLAYLIST = [
     "levelEnd": 557,
     "slug": "level-557",
     "videoId": "p9cDhO1xg5M"
+  },
+  {
+    "title": "Dreamy Room Level 559 Walkthrough",
+    "subtitle": "Dreamy Room Level 559 video guide",
+    "href": "https://www.youtube.com/watch?v=wSmhmfp6E3c",
+    "levelStart": 559,
+    "levelEnd": 559,
+    "slug": "level-559",
+    "videoId": "wSmhmfp6E3c"
+  },
+  {
+    "title": "Dreamy Room Level 560 Walkthrough",
+    "subtitle": "Dreamy Room Level 560 video guide",
+    "href": "https://www.youtube.com/watch?v=PEfdjlVM_uY",
+    "levelStart": 560,
+    "levelEnd": 560,
+    "slug": "level-560",
+    "videoId": "PEfdjlVM_uY"
+  },
+  {
+    "title": "Dreamy Room Level 561 Walkthrough",
+    "subtitle": "Dreamy Room Level 561 video guide",
+    "href": "https://www.youtube.com/watch?v=fzmigVnAZt0",
+    "levelStart": 561,
+    "levelEnd": 561,
+    "slug": "level-561",
+    "videoId": "fzmigVnAZt0"
+  },
+  {
+    "title": "Dreamy Room Level 562 Walkthrough",
+    "subtitle": "Dreamy Room Level 562 video guide",
+    "href": "https://www.youtube.com/watch?v=kUDOeJ5_Nfk",
+    "levelStart": 562,
+    "levelEnd": 562,
+    "slug": "level-562",
+    "videoId": "kUDOeJ5_Nfk"
+  },
+  {
+    "title": "Dreamy Room Level 563 Walkthrough",
+    "subtitle": "Dreamy Room Level 563 video guide",
+    "href": "https://www.youtube.com/watch?v=lG-wNB_p7cQ",
+    "levelStart": 563,
+    "levelEnd": 563,
+    "slug": "level-563",
+    "videoId": "lG-wNB_p7cQ"
+  },
+  {
+    "title": "Dreamy Room Level 564 Walkthrough",
+    "subtitle": "Dreamy Room Level 564 video guide",
+    "href": "https://www.youtube.com/watch?v=lbRuvngVBv8",
+    "levelStart": 564,
+    "levelEnd": 564,
+    "slug": "level-564",
+    "videoId": "lbRuvngVBv8"
+  },
+  {
+    "title": "Dreamy Room Level 565 Walkthrough",
+    "subtitle": "Dreamy Room Level 565 video guide",
+    "href": "https://www.youtube.com/watch?v=IHb_mGUMPOs",
+    "levelStart": 565,
+    "levelEnd": 565,
+    "slug": "level-565",
+    "videoId": "IHb_mGUMPOs"
+  },
+  {
+    "title": "Dreamy Room Level 566 Walkthrough",
+    "subtitle": "Dreamy Room Level 566 video guide",
+    "href": "https://www.youtube.com/watch?v=_frfq9hLAdM",
+    "levelStart": 566,
+    "levelEnd": 566,
+    "slug": "level-566",
+    "videoId": "_frfq9hLAdM"
+  },
+  {
+    "title": "Dreamy Room Level 567 Walkthrough",
+    "subtitle": "Dreamy Room Level 567 video guide",
+    "href": "https://www.youtube.com/watch?v=Y3rZMZ_Nr2k",
+    "levelStart": 567,
+    "levelEnd": 567,
+    "slug": "level-567",
+    "videoId": "Y3rZMZ_Nr2k"
+  },
+  {
+    "title": "Dreamy Room Level 569 Walkthrough",
+    "subtitle": "Dreamy Room Level 569 video guide",
+    "href": "https://www.youtube.com/watch?v=IjX8qCDTfa8",
+    "levelStart": 569,
+    "levelEnd": 569,
+    "slug": "level-569",
+    "videoId": "IjX8qCDTfa8"
+  },
+  {
+    "title": "Dreamy Room Level 570 Walkthrough",
+    "subtitle": "Dreamy Room Level 570 video guide",
+    "href": "https://www.youtube.com/watch?v=lkqLsEvD0xY",
+    "levelStart": 570,
+    "levelEnd": 570,
+    "slug": "level-570",
+    "videoId": "lkqLsEvD0xY"
   }
 ]

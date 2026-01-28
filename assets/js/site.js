@@ -9,6 +9,19 @@
   if (isLevelPage) {
     document.body.classList.add('level-page');
   }
+  const playlist = window.DREAMY_PLAYLIST || [];
+  const maxLevel = playlist.reduce((m, e) => Math.max(m, e.levelEnd || 0), 0) || 557;
+
+  function syncMaxInputs() {
+    const inputs = document.querySelectorAll('[data-nav-jump-input], [data-level-search-input]');
+    inputs.forEach((input) => {
+      input.max = String(maxLevel);
+      if (input.placeholder) {
+        input.placeholder = input.placeholder.replace(/1-\d+/, `1-${maxLevel}`);
+      }
+    });
+  }
+  syncMaxInputs();
   // Ensure contact link exists in nav across pages
   if (navLinks && !navLinks.querySelector('a[href="/contact.html"]')) {
     const link = document.createElement('a');
